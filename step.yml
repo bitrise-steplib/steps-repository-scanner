@@ -1,12 +1,14 @@
-title: "Run CocoaPods and gather information about Xcode projects."
+title: "Repository scanner"
 summary: |-
-  Install the needed pods on the VM and gather the shared schemes with one Step.
+  Scans repository for iOS and Android projects
 description: |-
-  Run CocoaPods (pod install) and scan Xcode project files
+  For iOS projects detects CocoaPods and scan Xcode project files
   for valid Xcode command line configurations.
-website: https://github.com/bitrise-io/steps-cocoapods-and-repository-validator
-source_code_url: https://github.com/bitrise-io/steps-cocoapods-and-repository-validator
-support_url: https://github.com/bitrise-io/steps-cocoapods-and-repository-validator/issues
+
+  For Android projects checks for build.gradle files and lists all the gradle tasks
+website: https://github.com/bitrise-io/steps-repository-scanner
+source_code_url: https://github.com/bitrise-io/steps-repository-scanner
+support_url: https://github.com/bitrise-io/steps-repository-scanner/issues
 host_os_tags:
   - osx-10.10
   - ubuntu
