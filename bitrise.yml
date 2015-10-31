@@ -1,0 +1,26 @@
+format_version: 1.1.0
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+
+workflows:
+  new:
+    envs:
+    - source_root_path:
+    - scan_result_submit_api_token:
+    - scan_result_submit_url:
+    steps:
+    - script:
+        inputs:
+        - content: |-
+            #!/bin/bash
+            bash step.sh
+  test:
+    steps:
+    - change-workdir@1.0.0:
+        title: Switch working dir
+        run_if: true
+        inputs:
+        - path: "${BITRISE_SOURCE_PATH}"
+        - is_create_path: false
+    - path::./:
+        inputs:
+        - scan_only_branch: master
