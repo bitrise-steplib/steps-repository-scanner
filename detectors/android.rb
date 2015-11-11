@@ -2,8 +2,8 @@ require_relative '../config_helper'
 
 branch = ARGV[0]
 unless branch
-  puts "\e[31mBranch not specified\e[0m"
-  exit 0
+	puts "\e[31mBranch not specified\e[0m"
+	exit 0
 end
 
 gradle_files = Dir.glob(File.join("**/build.gradle"), File::FNM_CASEFOLD)
@@ -19,19 +19,33 @@ gradle_files.each do |gradle_file|
 
 	puts ""
 	puts "\e[32mInspecting gradle file at path: #{gradle_file}\e[0m"
-	IO.popen "gradle tasks --all" do |io|
-	  io.each do |line|
-	    if match = line.match(/^(?<configuration>\S+:\S*)(\s*-\s*.*)*/)
-	    	(configurations ||= []) << match.captures[0]	
-	    end
-	  end
+	puts " -> Running: $ gradle tasks --build-file '#{gradle_file}'"
+	IO.popen "gradle tasks --build-file '#{gradle_file}'" do |io|
+		is_build_tasks_section = false
+		io.each do |line|
+			if !is_build_tasks_section && line.match(/^Build tasks/)
+				is_build_tasks_section = true
+				next
+			else
+				if line.strip.empty?
+					is_build_tasks_section = false
+					next
+				end
+			end
+			if is_build_tasks_section
+				next if line.start_with? '--'
+				if match = line.match(/^(?<configuration>assemble\S*)(\s*-\s*.*)*/)
+					(configurations ||= []) << match.captures[0]
+				end
+			end
+		end
 	end
 
 	puts "Configurations found:"
 	if configurations.count > 0
 		configurations.each { |configuration| puts configuration }
 		puts "#{configurations.count} in total"
-		
+
 		config_helper.save("android", branch, {
 			name: gradle_file,
 			path: gradle_file,
