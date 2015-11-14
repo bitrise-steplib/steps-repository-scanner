@@ -14,13 +14,22 @@ puts "\e[32mAndroid gradle project detected\e[0m"
 
 config_helper = ConfigHelper.new
 
+repo_dir = Dir.pwd
+gradlew_files = Dir.glob(File.join(repo_dir, '/**/gradlew'), File::FNM_CASEFOLD)
+
+gradlew_or_gradle = 'gradle'
+gradlew_or_gradle = gradlew_files[0] if !gradlew_files.nil? && gradlew_files.count == 1
+
+puts
+puts "gradlew_or_gradle: #{gradlew_or_gradle}"
+
 gradle_files.each do |gradle_file|
 	configurations = []
 
 	puts ""
 	puts "\e[32mInspecting gradle file at path: #{gradle_file}\e[0m"
-	puts " -> Running: $ gradle tasks --build-file '#{gradle_file}'"
-	IO.popen "gradle tasks --build-file '#{gradle_file}'" do |io|
+	puts " -> Running: $ #{gradlew_or_gradle} tasks --build-file '#{gradle_file}'"
+	IO.popen "#{gradlew_or_gradle} tasks --build-file '#{gradle_file}'" do |io|
 		is_build_tasks_section = false
 		io.each do |line|
 			if !is_build_tasks_section && line.match(/^Build tasks/)
