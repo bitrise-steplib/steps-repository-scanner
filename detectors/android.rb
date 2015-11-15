@@ -15,10 +15,20 @@ puts "\e[32mAndroid gradle project detected\e[0m"
 config_helper = ConfigHelper.new
 
 repo_dir = Dir.pwd
-gradlew_files = Dir.glob(File.join(repo_dir, '/**/gradlew'), File::FNM_CASEFOLD)
+gradlew_files = Dir.glob('./**/gradlew', File::FNM_CASEFOLD)
+
+gradlew_path = nil
+gradlew_path = gradlew_files[0] if !gradlew_files.nil? && gradlew_files.count == 1
 
 gradlew_or_gradle = 'gradle'
-gradlew_or_gradle = gradlew_files[0] if !gradlew_files.nil? && gradlew_files.count == 1
+if gradlew_path
+	puts
+	puts " -> Gradle wrapper (gradlew) found - using it: #{gradlew_path}"
+	gradlew_or_gradle = gradlew_path
+else
+	puts
+	puts " -> No gradle wrapper (gradlew) found - using gradle directly"
+end
 
 puts
 puts "gradlew_or_gradle: #{gradlew_or_gradle}"
@@ -58,7 +68,8 @@ gradle_files.each do |gradle_file|
 		config_helper.save("android", branch, {
 			name: gradle_file,
 			path: gradle_file,
-			schemes: configurations
+			schemes: configurations,
+			gradlew_path: gradlew_path
 		})
 	else
 		puts "\e[31mNo configuration found\e[0m"
