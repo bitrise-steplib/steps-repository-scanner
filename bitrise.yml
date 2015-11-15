@@ -15,6 +15,8 @@ workflows:
         run_if: true
         inputs:
         # - repository_url: https://github.com/bitrise-samples/sample-apps-android-sdk22-subdir.git
+        # - repository_url: https://github.com/bitrise-samples/sample-apps-android-sdk22.git
+        # - repository_url: https://github.com/bitrise-samples/android-sdk22-no-gradlew.git
         - repository_url: https://github.com/bitrise-samples/android-ndk-sample-app.git
         # - repository_url: https://github.com/bitrise-io/sample-apps-ios-xcode7.git
         - branch: master
