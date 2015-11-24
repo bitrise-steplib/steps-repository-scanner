@@ -2,8 +2,16 @@ class Podfile
 	def method_missing symbol, *args
 	end
 
+	def Object.const_missing const, *args
+	end
+
+	def uninitialized_constant constant, *args
+		puts "Unitialized Constant: #{constant}"
+		puts args
+	end
+
 	def self.from_file(path)
-	  podfile = Podfile.new do
+	  Podfile.new do
 	  	@full_path = File.expand_path(path)
 	  	@base_dir = File.dirname(@full_path)
 	  	eval(File.open(@full_path).read, nil, path)
