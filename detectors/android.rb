@@ -60,7 +60,7 @@ gradle_files.each do |gradle_file|
 		end
 	end
 
-	puts "Configurations found:"
+	puts "Assemble configurations:"
 	if configurations.count > 0
 		configurations.each { |configuration| puts configuration }
 		puts "#{configurations.count} in total"
