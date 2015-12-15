@@ -38,7 +38,7 @@ gradle_files.each do |gradle_file|
 
 	puts ""
 	puts "\e[32mInspecting gradle file at path: #{gradle_file}\e[0m"
-	puts " -> Running: $ #{gradlew_or_gradle} tasks --build-file '#{gradle_file}'"
+	puts " -> Inspecting output of: $ #{gradlew_or_gradle} tasks --build-file '#{gradle_file}'"
 	IO.popen "#{gradlew_or_gradle} tasks --build-file '#{gradle_file}'" do |io|
 		is_build_tasks_section = false
 		io.each do |line|
