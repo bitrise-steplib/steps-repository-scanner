@@ -53,7 +53,7 @@ gradle_files.each do |gradle_file|
 			end
 			if is_build_tasks_section
 				next if line.start_with? '--'
-				if match = line.match(/^(?<configuration>assemble\S*)(\s*-\s*.*)*/)
+				if match = line.match(/^(?<configuration>assemble\S+)(\s*-\s*.*)*/)
 					(configurations ||= []) << match.captures[0]
 				end
 			end
