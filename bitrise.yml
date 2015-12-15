@@ -14,7 +14,8 @@ workflows:
     - git-clone:
         run_if: true
         inputs:
-        - repository_url:
+        - repository_url: https://github.com/bitrise-samples/android-sdk22-no-gradlew.git
+        # - repository_url: https://github.com/bitrise-samples/sample-apps-android-sdk22.git
         - branch: master
         - clone_into_dir: ./_tmp/sample-repo
     - change-workdir:
