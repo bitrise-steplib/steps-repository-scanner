@@ -10,12 +10,16 @@ workflows:
             #!/bin/bash
             set -e
             set -v
+            rm ~/.bitrise_config
             rm -rf ./_tmp
     - git-clone:
         run_if: true
         inputs:
-        - repository_url: https://github.com/bitrise-samples/android-sdk22-no-gradlew.git
+        # - repository_url: https://github.com/bitrise-io/sample-apps-ios-watchkit.git
+        # - repository_url: https://github.com/bitrise-samples/android-sdk22-no-gradlew.git
         # - repository_url: https://github.com/bitrise-samples/sample-apps-android-sdk22.git
+        # - repository_url: https://github.com/bitrise-io/sample-apps-xamarin-ios.git
+        - repository_url: https://github.com/bitrise-io/sample-apps-xamarin-android.git
         - branch: master
         - clone_into_dir: ./_tmp/sample-repo
     - change-workdir:

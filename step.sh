@@ -20,6 +20,7 @@ fi
 project_type_detectors=(
 	"${THIS_SCRIPTDIR}/detectors/ios.rb"
 	"${THIS_SCRIPTDIR}/detectors/android.rb"
+	"${THIS_SCRIPTDIR}/detectors/xamarin.rb"
 	)
 
 if [ ! -z "${scan_only_branch}" ] ; then

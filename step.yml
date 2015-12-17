@@ -6,6 +6,8 @@ description: |-
   for valid Xcode command line configurations.
 
   For Android projects checks for build.gradle files and lists all the gradle tasks
+
+  For Xamarin projects checks the solution files and lists the configuration options
 website: https://github.com/bitrise-io/steps-repository-scanner
 source_code_url: https://github.com/bitrise-io/steps-repository-scanner
 support_url: https://github.com/bitrise-io/steps-repository-scanner/issues
@@ -15,6 +17,7 @@ host_os_tags:
 project_type_tags:
   - ios
   - android
+  - xamarin
 type_tags:
   - xcode
   - cocoapods
