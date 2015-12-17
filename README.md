@@ -5,6 +5,7 @@ Gather information about project files
 Currently supported projects:
 - iOS ( with or without CocoaPods )
 - Android ( with Gradle )
+- Xamarin (iOS and Android)
 
 ## How to use this Step
 
