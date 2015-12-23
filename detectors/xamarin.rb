@@ -33,17 +33,20 @@ def get_xamarin_android_api_and_configs(project_file_path)
   regex = '<PropertyGroup Condition=" \'\$\(Configuration\)\|\$\(Platform\)\' == \'(.*)\' ">'
   configs = []
 
-  lines = File.readlines(project_file_path)
-  (lines).each do |line|
-    match = line.match(regex)
-    next unless match
+  if File.exists?(project_file_path)
+    lines = File.readlines(project_file_path)
+    (lines).each do |line|
+      match = line.match(regex)
+      next unless match
 
-    config = match.captures[0]
-    next unless config
+      config = match.captures[0]
+      next unless config
 
-    configs << config
+      configs << config
+    end
   end
 
+  return nil if !lines || lines.count < 0
   return 'Mono.Android', configs if lines.grep(/Include="Mono.Android"/).size > 0
 
   nil
@@ -53,17 +56,20 @@ def get_xamarin_ios_api_and_configs(project_file_path)
   regex = '<PropertyGroup Condition=" \'\$\(Configuration\)\|\$\(Platform\)\' == \'(.*)\' ">'
   configs = []
 
-  lines = File.readlines(project_file_path)
-  (lines).each do |line|
-    match = line.match(regex)
-    next unless match
+  if File.exists?(project_file_path)
+    lines = File.readlines(project_file_path)
+    (lines).each do |line|
+      match = line.match(regex)
+      next unless match
 
-    config = match.captures[0]
-    next unless config
+      config = match.captures[0]
+      next unless config
 
-    configs << config
+      configs << config
+    end
   end
 
+  return nil if !lines || lines.count < 0
   return 'monotouch', configs if lines.grep(/Include="monotouch"/).size > 0
   return 'Xamarin.iOS', configs if lines.grep(/Include="Xamarin.iOS"/).size > 0
 
