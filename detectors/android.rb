@@ -25,6 +25,12 @@ if gradlew_path
 	puts
 	puts " -> Gradle wrapper (gradlew) found - using it: #{gradlew_path}"
 	gradlew_or_gradle = gradlew_path
+
+	unless File.executable?(gradlew_or_gradle)
+		puts " (i) Missing executable permission on gradlew file, adding it now. Path: #{gradlew_or_gradle}"
+
+		File.chmod(0770, gradlew_or_gradle)
+	end
 else
 	puts
 	puts " -> No gradle wrapper (gradlew) found - using gradle directly"
