@@ -1,0 +1,11 @@
+release:
+  development_branch: master
+  release_branch: master
+changelog:
+  path: ./CHANGELOG.md
+  item_template: |-
+    {{range .Sections}}### {{.StartTaggedCommit.Tag}} - {{.EndTaggedCommit.Tag}} ({{.EndTaggedCommit.Date.Format "2006 Jan 02"}})
+
+    {{range $idx, $commit := .Commits}}* [{{$commit.Hash}}] {{$commit.Author}}: {{$commit.Message}} ({{$commit.Date.Format "2006 Jan 02"}})
+    {{end}}
+    {{end}}
