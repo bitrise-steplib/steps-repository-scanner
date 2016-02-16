@@ -10,6 +10,7 @@ gradle_files = Dir.glob(File.join("**/build.gradle"), File::FNM_CASEFOLD)
 
 exit 0 if gradle_files.count == 0
 
+puts
 puts "\e[32mAndroid gradle project detected\e[0m"
 
 config_helper = ConfigHelper.new
