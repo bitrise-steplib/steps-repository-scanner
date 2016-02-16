@@ -33,8 +33,7 @@ workflows:
         - path: ./_tmp/sample-repo
         - is_create_path: true
     - path::./:
-        inputs:
-        - scan_only_branch: master
+        inputs: []
     - script:
         title: Printing the results
         inputs:
