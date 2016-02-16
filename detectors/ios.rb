@@ -17,6 +17,7 @@ ios_projects.delete_if { |workspace| workspace.include?(".xcodeproj/") || worksp
 
 exit 0 if (ios_projects.count) == 0
 
+puts
 puts "\e[32miOS project detected\e[0m"
 
 # Check for Podfiles
