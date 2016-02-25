@@ -1,11 +1,13 @@
 release:
-  development_branch: master
+  development_branch: develop
   release_branch: master
 changelog:
-  path: ./CHANGELOG.md
-  item_template: |-
-    {{range .Sections}}### {{.StartTaggedCommit.Tag}} - {{.EndTaggedCommit.Tag}} ({{.EndTaggedCommit.Date.Format "2006 Jan 02"}})
+  path: CHANGELOG.md
+  content_template: |-
+    {{range .ContentItems}}### {{.EndTaggedCommit.Tag}} ({{.EndTaggedCommit.Date.Format "2006 Jan 02"}})
 
-    {{range $idx, $commit := .Commits}}* [{{$commit.Hash}}] {{$commit.Author}}: {{$commit.Message}} ({{$commit.Date.Format "2006 Jan 02"}})
+    {{range .Commits}}* [{{firstChars .Hash 7}}] {{.Message}}
     {{end}}
     {{end}}
+  header_template: '## Changelog (Current version: {{.Version}})'
+  footer_template: 'Updated: {{.CurrentDate.Format "2006 Jan 02"}}'
