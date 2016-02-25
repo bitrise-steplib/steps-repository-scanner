@@ -15,7 +15,6 @@ puts "\e[32mAndroid gradle project detected\e[0m"
 
 config_helper = ConfigHelper.new
 
-repo_dir = Dir.pwd
 gradlew_files = Dir.glob('./**/gradlew', File::FNM_CASEFOLD)
 
 gradlew_path = nil

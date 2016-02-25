@@ -44,15 +44,23 @@ class Podfile
 		@current_target = parent_target
 	end
 
-	def xcodeproj(project, *args)
+	def project(project, *args)
+		project = File.join(File.dirname(project), File.basename(project, File.extname(project)))
+
 		if @current_target
-			@current_target.project = project
+			@current_target[:project] = project
 		else
 			@base_project = project
 		end
 	end
 
+	def xcodeproj(project, *args)
+		project(project, args)
+	end
+
 	def workspace(workspace, *args)
+		workspace = File.join(File.dirname(workspace), File.basename(workspace, File.extname(workspace)))
+
 		if @current_target
 			@current_target.workspace = workspace
 		else
