@@ -31,7 +31,7 @@ podfile_pathes.each do |path|
 	puts "\e[32mPodfile detected at path: #{path}\e[0m"
 
 	podfile = Podfile.from_file(path)
-    workspaces = podfile.get_workspaces(podfile.list_targets.first)
+  workspaces = podfile.get_workspaces(podfile.list_targets.first)
 end
 puts "\e[33mNo Podfile detected\e[0m" if podfile_pathes.empty?
 
