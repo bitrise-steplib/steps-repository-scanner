@@ -6,6 +6,7 @@ Currently supported projects:
 - iOS ( with or without CocoaPods )
 - Android ( with Gradle )
 - Xamarin (iOS and Android)
+- fastlane
 
 ## How to use this Step
 

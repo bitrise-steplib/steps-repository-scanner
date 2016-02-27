@@ -52,6 +52,7 @@ project_type_detectors=(
 	"${THIS_SCRIPTDIR}/detectors/ios.rb"
 	"${THIS_SCRIPTDIR}/detectors/android.rb"
 	"${THIS_SCRIPTDIR}/detectors/xamarin.rb"
+  "${THIS_SCRIPTDIR}/detectors/fastlane.rb"
 )
 
 branch=$(git symbolic-ref --short HEAD)

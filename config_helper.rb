@@ -1,8 +1,12 @@
 require "json"
 
 class ConfigHelper
+	def self.config_path
+		"#{ENV['HOME']}/.bitrise_config"
+	end
+
 	def initialize
-		@file_path = File.expand_path("~/.bitrise_config")
+		@file_path = ConfigHelper.config_path
 	end
 
 	def save(project_type, branch, project_info)
