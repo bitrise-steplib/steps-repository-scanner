@@ -62,7 +62,7 @@ class Podfile
 		workspace = File.join(File.dirname(workspace), File.basename(workspace, File.extname(workspace)))
 
 		if @current_target
-			@current_target.workspace = workspace
+			@current_target[:workspace] = workspace
 		else
 			@base_workspace = workspace
 		end
