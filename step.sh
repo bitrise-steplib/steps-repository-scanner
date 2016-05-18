@@ -59,7 +59,7 @@ if [ $? -ne 0 ] || [ "$branch" == "" ] ; then
 	log_fail "Failed to get current branch"
 fi
 
-log_info "Running detection scripts on brach: $branch"
+log_info "Running detection scripts on branch: $branch"
 for i in "${!project_type_detectors[@]}" ; do
 	ruby "${project_type_detectors[$i]}" "${branch}"
 
