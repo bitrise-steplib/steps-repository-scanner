@@ -1,5 +1,7 @@
 # Repository Validator
 
+**WARNING: This step is deprecated, use [Project scanner](https://github.com/bitrise-steplib/steps-project-scanner.git) instead**
+
 Gather information about project files
 
 Currently supported projects:
